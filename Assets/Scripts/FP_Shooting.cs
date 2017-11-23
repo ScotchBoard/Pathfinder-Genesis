@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FP_Shooting : MonoBehaviour
 {
@@ -13,17 +14,22 @@ public class FP_Shooting : MonoBehaviour
     [SerializeField]
     private int damage = 1;
 
+    private AmmoManager ammoManager;
+
     //Drag in the Bullet Prefab from the Component Inspector.
     public GameObject bullet;
 
     //Enter the Speed of the Bullet from the Component Inspector.
     public float bulletForwardForce;
 
+    private void Start()
+    {
+        ammoManager = GetComponent<AmmoManager>();        
+    }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && Time.time > nextFire)
+        if (Input.GetKey(KeyCode.Mouse0) && Time.time > nextFire && ammoManager.CanFire())
         {
             nextFire = Time.time + fireRate;
 
@@ -41,6 +47,11 @@ public class FP_Shooting : MonoBehaviour
 
             //Tell the bullet to be "pushed" forward by an amount set by Bullet_Forward_Force.
             Temporary_RigidBody.AddForce(transform.forward * bulletForwardForce);
+
+            //Lower the ammo capacity
+            ammoManager.Fire();
+
+            //ammoImage.fillAmount -= 0.2f / ammo;
 
             Temporary_Bullet_Handler.GetComponent<BulletDamage>().Attacker("Player");
 

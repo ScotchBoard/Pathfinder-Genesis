@@ -96,6 +96,10 @@
     <Compile Include="Assets\ProgressBar\Script\ProgressBarBehaviour.cs" />
     <Compile Include="Assets\ProgressBar\Script\ProgressRadialBehaviour.cs" />
     <Compile Include="Assets\ProgressBar\Script\Utils.cs" />
+    <Compile Include="Assets\RotationalAmmoIndicator\Scripts\DestroyAfter.cs" />
+    <Compile Include="Assets\RotationalAmmoIndicator\Scripts\RotationalAmmoIndicator.cs" />
+    <Compile Include="Assets\RotationalAmmoIndicator\Scripts\ShootScript.cs" />
+    <Compile Include="Assets\Scripts\AmmoManager.cs" />
     <Compile Include="Assets\Scripts\BulletDamage.cs" />
     <Compile Include="Assets\Scripts\Drone.cs" />
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
@@ -111,6 +115,8 @@
     <Compile Include="Assets\SMC Pack 1\Demo\Files\V_Text.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Fonts\unique\OFL-FAQ.txt" />
+    <None Include="Assets\Fonts\unique\OFL.txt" />
     <None Include="Assets\Materials\Force Field\Force Field.shader" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />

@@ -151,6 +151,8 @@
     <Compile Include="Assets\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Fonts\unique\OFL-FAQ.txt" />
+    <None Include="Assets\Fonts\unique\OFL.txt" />
     <None Include="Assets\Materials\Force Field\Force Field.shader" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
