@@ -26,7 +26,7 @@ public class Drone : MonoBehaviour
     private void Update()
     {
         transform.position = new Vector3(transform.position.x, heightDistance, transform.position.z);
-        if (PlayerInfo.gameOver)
+        if (GameManager.INSTANCE.GameOver)
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }

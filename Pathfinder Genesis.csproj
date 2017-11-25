@@ -103,10 +103,13 @@
     <Compile Include="Assets\Scripts\BulletDamage.cs" />
     <Compile Include="Assets\Scripts\Drone.cs" />
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\EnemyInfo.cs" />
     <Compile Include="Assets\Scripts\FirstPersonController.cs" />
     <Compile Include="Assets\Scripts\ForceField.cs" />
     <Compile Include="Assets\Scripts\FP_Shooting.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GrenadeThrower.cs" />
+    <Compile Include="Assets\Scripts\IUnits.cs" />
     <Compile Include="Assets\Scripts\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\RewindTime.cs" />
     <Compile Include="Assets\Scripts\TimeBehaviour.cs" />

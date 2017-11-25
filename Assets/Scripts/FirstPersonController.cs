@@ -51,7 +51,7 @@ public class FirstPersonController : MonoBehaviour
 
 	void Update ()
     {
-        if (!PlayerInfo.gameOver && (transform.rotation.x >= -1 && transform.rotation.x <= 1))
+        if (!GameManager.INSTANCE.GameOver && (transform.rotation.x >= -1 && transform.rotation.x <= 1))
         {
             Movement();
             Rotation();

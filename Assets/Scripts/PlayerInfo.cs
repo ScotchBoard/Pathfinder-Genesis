@@ -1,60 +1,46 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using ProgressBar;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInfo : MonoBehaviour
+public class PlayerInfo : MonoBehaviour, IUnits
 {
     [SerializeField]
-    private int playerHealth = 10;
-    public static int playerHealthStatic;
-    public static bool gameOver;
-    public static bool isReviving = false;
-
+    private GameObject healthBar;
     [SerializeField]
-    private int enemyHealth = 3;
+    private int playerHealth = 10;
+
+    private ProgressBarBehaviour progressBarBehaviour;
 
     private void Start()
     {
-        gameOver = false;
-        playerHealthStatic = playerHealth;
+        progressBarBehaviour = healthBar.GetComponent<ProgressBarBehaviour>();
     }
 
-    private void Update()
+    public void SetPlayerHealth(int playerHealth)
     {
-        //Debug.Log("Health: " + playerHealth);
+        this.playerHealth = playerHealth;
+    }
 
-        if (playerHealthStatic <= 0)
-        {
-            gameOver = true;
-        }
+    public int GetPlayerHealth()
+    {
+        return playerHealth;
     }
 
     public void Hurt(int damage)
     {
-        if (gameObject.tag == "Player")
-        {
-            playerHealthStatic -= damage;
-        }
-        else
-        {
-            enemyHealth -= damage;
-        }
+        playerHealth -= damage;
+
         CheckIfAlive();
     }
 
     private void CheckIfAlive()
     {
-        if(gameObject.tag == "Enemy" && enemyHealth <=0)
+        if (playerHealth <= 0)
         {
-            Destroy(gameObject);
-        }
-        else
-        {
-            if (gameObject.tag == "Player" && playerHealthStatic <= 0)
-            {
-                gameOver = true;
-                Debug.Log("You are dead, not a big surprise.");
-            }
+            GameManager.INSTANCE.GameOver = true;
+            Debug.Log("You are dead, not a big surprise.");
         }
     }
 }

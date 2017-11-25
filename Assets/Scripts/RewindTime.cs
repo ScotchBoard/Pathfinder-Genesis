@@ -35,18 +35,12 @@ public class RewindTime: MonoBehaviour
 
     private PlayerInfo playerInfo;
 
-    //private new Camera camera;
-
     private bool firstRun = true;
 
     void Start()
     {
         keyframes = new ArrayList();
         playerInfo = player.GetComponent<PlayerInfo>();
-        //camera = Camera.main;
-
-        //camera.GetComponent<Blur>().enabled = false;
-        //camera.GetComponent<Bloom>().enabled = false;
     }
 
     void Update()
@@ -55,15 +49,11 @@ public class RewindTime: MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1))
         {
             isReversing = true;
-            //camera.GetComponent<Blur>().enabled = true;
-            //camera.GetComponent<Bloom>().enabled = true;
         }
         else
         {
             isReversing = false;
             firstRun = true;
-            //camera.GetComponent<Blur>().enabled = false;
-            //camera.GetComponent<Bloom>().enabled = false;
         }
     }
 
@@ -116,11 +106,11 @@ public class RewindTime: MonoBehaviour
 
     private void Revive()
     {
-        if (PlayerInfo.gameOver)
+        if (GameManager.INSTANCE.GameOver)
         {
-            PlayerInfo.playerHealthStatic = 2;
-            PlayerInfo.gameOver = false;
-            PlayerInfo.isReviving = true;
+            player.GetComponent<PlayerInfo>().SetPlayerHealth(2);
+            GameManager.INSTANCE.GameOver = false;
+            GameManager.INSTANCE.IsReviving = true;
         }
     }
 

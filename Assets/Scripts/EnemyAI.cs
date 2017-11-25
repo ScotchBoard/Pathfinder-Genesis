@@ -57,7 +57,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (navMeshAgent != null)
         {
-            if (PlayerInfo.gameOver)
+            if (GameManager.INSTANCE.GameOver)
             {
                 navMeshAgent.isStopped = true;
             }
@@ -129,12 +129,12 @@ public class EnemyAI : MonoBehaviour
     {
         while (true)
         {
-            if (!PlayerInfo.gameOver)
+            if (!GameManager.INSTANCE.GameOver)
             {
-                if(PlayerInfo.isReviving)
+                if(GameManager.INSTANCE.IsReviving)
                 {
                     yield return new WaitForSeconds(playerRespawnWaitTime);
-                    PlayerInfo.isReviving = false;
+                    GameManager.INSTANCE.IsReviving = false;
                 }
                 if (CheckDistanceForAttack())
                 {
