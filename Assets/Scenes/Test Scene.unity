@@ -293,6 +293,14 @@ Prefab:
       propertyPath: m_Name
       value: EnergyBar
       objectReference: {fileID: 0}
+    - target: {fileID: 11413564, guid: c2b5c3dfb602bbd4996c71afd555c0f5, type: 2}
+      propertyPath: ProgressSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 11413564, guid: c2b5c3dfb602bbd4996c71afd555c0f5, type: 2}
+      propertyPath: TriggerOnComplete
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c2b5c3dfb602bbd4996c71afd555c0f5, type: 2}
   m_IsPrefabParent: 0
@@ -794,7 +802,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1411988268}
-  playerHealth: 10
+  energyBar: {fileID: 1762358064}
+  playerHealth: 100
+  playerEnergy: 100
 --- !u!1001 &472682889
 Prefab:
   m_ObjectHideFlags: 0
@@ -2143,7 +2153,7 @@ Prefab:
       objectReference: {fileID: 431733314}
     - target: {fileID: 1721750023065452, guid: d0b1287e15fa251459c306b22fbd89d7, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 54287476042014552, guid: d0b1287e15fa251459c306b22fbd89d7,
         type: 2}
@@ -2263,6 +2273,18 @@ Prefab:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 113562, guid: c2b5c3dfb602bbd4996c71afd555c0f5, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11413564, guid: c2b5c3dfb602bbd4996c71afd555c0f5, type: 2}
+      propertyPath: TriggerOnComplete
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11413564, guid: c2b5c3dfb602bbd4996c71afd555c0f5, type: 2}
+      propertyPath: ProgressSpeed
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c2b5c3dfb602bbd4996c71afd555c0f5, type: 2}
   m_IsPrefabParent: 0
@@ -2271,6 +2293,10 @@ RectTransform:
   m_PrefabParentObject: {fileID: 22413564, guid: c2b5c3dfb602bbd4996c71afd555c0f5,
     type: 2}
   m_PrefabInternal: {fileID: 1688817292}
+--- !u!1 &1762358064 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 113564, guid: c2b5c3dfb602bbd4996c71afd555c0f5, type: 2}
+  m_PrefabInternal: {fileID: 150579336}
 --- !u!1001 &1781537010
 Prefab:
   m_ObjectHideFlags: 0

@@ -9,21 +9,48 @@ public class PlayerInfo : MonoBehaviour, IUnits
     [SerializeField]
     private GameObject healthBar;
     [SerializeField]
-    private int playerHealth = 10;
+    private GameObject energyBar;
+    [SerializeField]
+    private float playerHealth = 100;
+    [SerializeField]
+    private float playerEnergy = 100;
 
-    private ProgressBarBehaviour progressBarBehaviour;
+    private ProgressBarBehaviour healthBarBehaviour;
+    private ProgressBarBehaviour energyBarBehaviour;
+    private float totalPlayerEnergy;
 
     private void Start()
     {
-        progressBarBehaviour = healthBar.GetComponent<ProgressBarBehaviour>();
+        totalPlayerEnergy = playerEnergy;
+
+        healthBarBehaviour = healthBar.GetComponent<ProgressBarBehaviour>();
+        energyBarBehaviour = energyBar.GetComponent<ProgressBarBehaviour>();
+
+        energyBarBehaviour.IncrementValue(playerEnergy);
+        healthBarBehaviour.IncrementValue(playerEnergy);
     }
 
-    public void SetPlayerHealth(int playerHealth)
+    public void SetPlayerEnergy(float playerEnergy)
     {
+        energyBarBehaviour.Value = totalPlayerEnergy - playerEnergy;
+        totalPlayerEnergy -= playerEnergy;
+
+        this.playerEnergy = playerEnergy;
+    }
+
+    public float GetPlayerEnergy()
+    {
+        return playerEnergy;
+    }
+
+    public void SetPlayerHealth(float playerHealth)
+    {
+        healthBarBehaviour.Value = playerHealth;
+
         this.playerHealth = playerHealth;
     }
 
-    public int GetPlayerHealth()
+    public float GetPlayerHealth()
     {
         return playerHealth;
     }
@@ -31,6 +58,8 @@ public class PlayerInfo : MonoBehaviour, IUnits
     public void Hurt(int damage)
     {
         playerHealth -= damage;
+
+        healthBarBehaviour.DecrementValue(damage);
 
         CheckIfAlive();
     }
@@ -42,5 +71,15 @@ public class PlayerInfo : MonoBehaviour, IUnits
             GameManager.INSTANCE.GameOver = true;
             Debug.Log("You are dead, not a big surprise.");
         }
+    }
+
+    public bool CanUseEnergy()
+    {
+        return totalPlayerEnergy > 0;
+    }
+
+    public bool CanUseEnergyDash()
+    {
+        return totalPlayerEnergy > 10;
     }
 }

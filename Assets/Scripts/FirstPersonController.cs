@@ -21,6 +21,8 @@ public class FirstPersonController : MonoBehaviour
     private bool canDash = true;
     [SerializeField]
     private float maxDashTime = 2.0f;
+    [SerializeField]
+    private float dashEnergyConsumption = 10f;
 
     // Rotation
     private float rotLeftRight; // Camera rotation speed
@@ -41,12 +43,15 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField]
     private float rotationDegreesAmount = 60f;
 
+    private PlayerInfo playerInfo;
+
     #endregion
 
     void Start ()
     {
         Cursor.visible = false;
         characterController = GetComponent<CharacterController>();
+        playerInfo = GetComponent<PlayerInfo>();
     }
 
 	void Update ()
@@ -93,8 +98,12 @@ public class FirstPersonController : MonoBehaviour
     IEnumerator Dash(float cooldown)
     {
         canDash = false;
+        playerInfo.SetPlayerEnergy(dashEnergyConsumption);
         yield return new WaitForSeconds(cooldown);
-        canDash = true;
+        if (playerInfo.CanUseEnergyDash())
+        {
+            canDash = true;
+        }
     }
 
     // Keyboard

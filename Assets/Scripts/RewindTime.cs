@@ -6,11 +6,13 @@ public class Keyframe
 {
     public Vector3 position;
     public Vector3 rotation;
+    public float health;
 
-    public Keyframe(Vector3 position, Vector3 rotation)
+    public Keyframe(Vector3 position, Vector3 rotation, float health)
     {
         this.position = position;
         this.rotation = rotation;
+        this.health = health;
     }
 }
 
@@ -22,6 +24,8 @@ public class RewindTime: MonoBehaviour
     private ArrayList keyframes;
     [SerializeField]
     private bool isReversing = false;
+    [SerializeField]
+    private float rewindEnergyConsumption = 0.1f;
 
     [SerializeField]
     private int keyframe = 5;
@@ -32,6 +36,8 @@ public class RewindTime: MonoBehaviour
     private Vector3 previousPosition;
     private Vector3 currentRotation;
     private Vector3 previousRotation;
+    private float currentHealth;
+    private float previousHealth;
 
     private PlayerInfo playerInfo;
 
@@ -46,7 +52,7 @@ public class RewindTime: MonoBehaviour
     void Update()
     {
         // If Right Click is pressed - rewind time + effects
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKey(KeyCode.Mouse1) && playerInfo.CanUseEnergy())
         {
             isReversing = true;
         }
@@ -68,7 +74,8 @@ public class RewindTime: MonoBehaviour
             else
             {
                 frameCounter = 0;
-                keyframes.Add(new Keyframe(player.transform.position, player.transform.localEulerAngles));
+
+                keyframes.Add(new Keyframe(player.transform.position, player.transform.localEulerAngles, playerInfo.GetPlayerHealth()));
             }
         }
         else
@@ -93,6 +100,9 @@ public class RewindTime: MonoBehaviour
             float interpolation = (float)reverseCounter / (float)keyframe;
             player.transform.position = Vector3.Lerp(previousPosition, currentPosition, interpolation);
             player.transform.localEulerAngles = Vector3.Lerp(previousRotation, currentRotation, interpolation);
+            playerInfo.SetPlayerHealth(Mathf.Lerp(previousHealth, currentHealth, interpolation));
+
+            playerInfo.SetPlayerEnergy(rewindEnergyConsumption);
 
             Revive();
         }
@@ -126,6 +136,9 @@ public class RewindTime: MonoBehaviour
             
             currentRotation = (keyframes[lastIndex] as Keyframe).rotation;
             previousRotation = (keyframes[secondToLastIndex] as Keyframe).rotation;
+
+            currentHealth = (keyframes[lastIndex] as Keyframe).health;
+            previousHealth = (keyframes[secondToLastIndex] as Keyframe).health;
 
             keyframes.RemoveAt(lastIndex);
         }
