@@ -191,6 +191,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1435445600076764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4493258941498558}
+  m_Layer: 0
+  m_Name: WarriorEmitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1482133987763980
 GameObject:
   m_ObjectHideFlags: 1
@@ -683,6 +698,19 @@ Transform:
   m_Father: {fileID: 4151465615349974}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4493258941498558
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435445600076764}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0016177496, y: 0.25033334, z: 0.29426703}
+  m_LocalScale: {x: 0.16666667, y: 0.16666667, z: 0.16666667}
+  m_Children: []
+  m_Father: {fileID: 4812063453076318}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4522297517823304
 Transform:
   m_ObjectHideFlags: 1
@@ -819,6 +847,7 @@ Transform:
   m_Children:
   - {fileID: 4933914417299074}
   - {fileID: 4672598918185544}
+  - {fileID: 4493258941498558}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -959,7 +988,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!95 &95611720574301026
 Animator:
@@ -971,7 +1000,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: cc633396b5f95da4b916357a5508ee4f, type: 3}
   m_Controller: {fileID: 9100000, guid: b89fde3ac65dd9b4faa065e68bc80b18, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -989,11 +1018,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3fbf7bf8c2322144b2d67588bcca446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  player: {fileID: 0}
   bulletPrefab: {fileID: 1738566824525030, guid: dd79cfc8efca4b34dadfaf0ae7286ea5,
     type: 2}
   bulletForwardForce: 5000
   heightDistance: 1.5
+  attackSpeed: 0.3
+  rotationSpeed: 5
+  playerRespawnWaitTime: 4
+  attackRange: 80
+  playerInRangeDistance: 120
 --- !u!114 &114169711549267948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1017,7 +1051,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53804799c13767743939d9824a31e45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 10
   enemyHealth: 3
 --- !u!136 &136502046051241638
 CapsuleCollider:

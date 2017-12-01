@@ -110,6 +110,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GrenadeThrower.cs" />
     <Compile Include="Assets\Scripts\IUnits.cs" />
+    <Compile Include="Assets\Scripts\Minimap.cs" />
     <Compile Include="Assets\Scripts\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\RewindTime.cs" />
     <Compile Include="Assets\Scripts\TimeBehaviour.cs" />

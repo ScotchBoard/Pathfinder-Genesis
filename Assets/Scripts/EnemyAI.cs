@@ -80,7 +80,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    // TO-DO animations
+    // TODO animations
     private void Animations()
     {
     }

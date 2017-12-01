@@ -80,6 +80,7 @@ public class PlayerInfo : MonoBehaviour, IUnits
 
     public bool CanUseEnergyDash()
     {
+        // TODO sometimes when the energy is less than 10 you can still dash
         return totalPlayerEnergy > 10;
     }
 }

@@ -118,7 +118,7 @@ public class RewindTime: MonoBehaviour
     {
         if (GameManager.INSTANCE.GameOver)
         {
-            player.GetComponent<PlayerInfo>().SetPlayerHealth(2);
+            //player.GetComponent<PlayerInfo>().SetPlayerHealth(2); // the amount of hp to start with after reviving.
             GameManager.INSTANCE.GameOver = false;
             GameManager.INSTANCE.IsReviving = true;
         }

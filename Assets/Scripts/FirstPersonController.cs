@@ -142,8 +142,7 @@ public class FirstPersonController : MonoBehaviour
         if (Mathf.Abs(totalRotation) < Mathf.Abs(rotationDegreesAmount))
         {
             float currentAngleX = transform.rotation.eulerAngles.x;
-            transform.rotation =
-             Quaternion.AngleAxis(currentAngleX + (Time.deltaTime * rotationDegreesPerSecond), Vector3.right);
+            transform.rotation = Quaternion.AngleAxis(currentAngleX + (Time.deltaTime * rotationDegreesPerSecond), Vector3.right);
             totalRotation += Time.deltaTime * rotationDegreesPerSecond;
         }
     }
