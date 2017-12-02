@@ -13,6 +13,10 @@ public class FP_Shooting : MonoBehaviour
     private float fireRate = 0.5F;
     [SerializeField]
     private int damage = 1;
+    [SerializeField]
+    private GameObject bulletFire;
+
+    private ParticleSystem[] fireParticles;
 
     private AmmoManager ammoManager;
 
@@ -24,7 +28,8 @@ public class FP_Shooting : MonoBehaviour
 
     private void Start()
     {
-        ammoManager = GetComponent<AmmoManager>();        
+        ammoManager = GetComponent<AmmoManager>();
+        fireParticles = bulletFire.GetComponentsInChildren<ParticleSystem>();
     }
 
     void Update()
@@ -32,6 +37,8 @@ public class FP_Shooting : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0) && Time.time > nextFire && ammoManager.CanFire())
         {
             nextFire = Time.time + fireRate;
+
+            FireParticles();
 
             //The Bullet instantiation happens here.
             GameObject Temporary_Bullet_Handler;
@@ -57,6 +64,14 @@ public class FP_Shooting : MonoBehaviour
 
             //Basic Clean Up, set the Bullets to self destruct after 3 Seconds.
             Destroy(Temporary_Bullet_Handler, 6.0f);
+        }
+    }
+
+    private void FireParticles()
+    {
+        foreach (var particle in fireParticles)
+        {
+            particle.Play();
         }
     }
 }

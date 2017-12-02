@@ -57,6 +57,7 @@ public class PlayerInfo : MonoBehaviour, IUnits
 
     public void Hurt(int damage)
     {
+        damage *= 10;
         playerHealth -= damage;
 
         healthBarBehaviour.DecrementValue(damage);

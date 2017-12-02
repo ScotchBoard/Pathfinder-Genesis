@@ -55,4 +55,9 @@ public class BulletDamage : MonoBehaviour
             targetAcquired = false;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
 }

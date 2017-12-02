@@ -103,7 +103,7 @@ public class EnemyAI : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, transform.forward);
 
-        if (Physics.SphereCast(ray, 0.75f, out hit, layer_mask))
+        if (Physics.SphereCast(ray, 2f, out hit, layer_mask))
         {
             GameObject hitObject = hit.transform.gameObject;
             if (hitObject.tag == "Player")//hitObject.GetComponent<PlayerInfo>())
