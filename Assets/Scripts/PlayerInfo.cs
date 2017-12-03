@@ -37,6 +37,7 @@ public class PlayerInfo : MonoBehaviour, IUnits
     #endregion
 
     #region Start - Update
+
     private void Start()
     {
         ammoManager = GetComponentInChildren<AmmoManager>();
@@ -47,7 +48,7 @@ public class PlayerInfo : MonoBehaviour, IUnits
         energyBarBehaviour = energyBar.GetComponent<ProgressBarBehaviour>();
 
         energyBarBehaviour.IncrementValue(playerEnergy);
-        healthBarBehaviour.IncrementValue(playerEnergy);
+        healthBarBehaviour.IncrementValue(playerHealth);
     }
 
     private void Update()
@@ -89,12 +90,13 @@ public class PlayerInfo : MonoBehaviour, IUnits
 
     #endregion
 
-    public void Hurt(int damage)
+    public void Hurt(float damage)
     {
-        damage *= 10;
+        //damage *= 10;
         playerHealth -= damage;
 
-        healthBarBehaviour.DecrementValue(damage);
+        //healthBarBehaviour.DecrementValue(damage);
+        healthBarBehaviour.Value = playerHealth;
 
         CheckIfAlive();
     }

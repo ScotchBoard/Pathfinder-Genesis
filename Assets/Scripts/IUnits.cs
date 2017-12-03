@@ -7,6 +7,6 @@ namespace Assets.Scripts
 {
     interface IUnits
     {
-        void Hurt(int damage);
+        void Hurt(float damage);
     }
 }

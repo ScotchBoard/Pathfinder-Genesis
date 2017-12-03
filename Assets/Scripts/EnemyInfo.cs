@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using ProgressBar;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,22 @@ using UnityEngine;
 public class EnemyInfo : MonoBehaviour, IUnits
 {
     [SerializeField]
-    private int enemyHealth = 3;
+    private float enemyHealth = 3;
+    [SerializeField]
+    private GameObject healthBar;
 
-    public void Hurt(int damage)
+    private ProgressBarBehaviour healthBarBehaviour;
+
+    private void Start()
+    {
+        healthBarBehaviour = healthBar.GetComponent<ProgressBarBehaviour>();
+
+        healthBarBehaviour.FillerInfo.MaxWidth = enemyHealth;//SetFillerSize(enemyHealth);
+
+        healthBarBehaviour.IncrementValue(enemyHealth);
+    }
+
+    public void Hurt(float damage)
     {
         enemyHealth -= damage;
 

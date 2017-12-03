@@ -6,22 +6,24 @@ using UnityEngine.UI;
 public class AmmoManager : MonoBehaviour
 {
     [SerializeField]
-    private int ammo;
+    private int bulletAmmo;
     [SerializeField]
-    private int maxAmmo;
+    private int maxBulletAmmo;
+    [SerializeField]
+    private int grenadeAmmo = 3;
     [SerializeField]
     private float reloadTime = 2f;
 
-    public Text ammoInUseText, ammoInTotalText;
-    public const int MAXAMMO = 100;
+    public Text ammoInUseText, ammoInTotalText, grenadeAmmoText;
+    public const int MAXAMMO = 100, MAXNADES = 5;
 
     private int ammoInUse, ammoInTotal, ammoDifference;
     private bool reloading = false;
 
     private void Awake()
     {
-        ammoInUse = ammo;
-        ammoInTotal = maxAmmo;
+        ammoInUse = bulletAmmo;
+        ammoInTotal = maxBulletAmmo;
     }
 
     private void Start()
@@ -60,10 +62,10 @@ public class AmmoManager : MonoBehaviour
     {
         if(ammoInUse == 0)
         {
-            if(ammoInTotal >= ammo)
+            if(ammoInTotal >= bulletAmmo)
             {
-                ammoInUse = ammo;
-                ammoInTotal -= ammo;
+                ammoInUse = bulletAmmo;
+                ammoInTotal -= bulletAmmo;
             }
             else
             {
@@ -74,9 +76,9 @@ public class AmmoManager : MonoBehaviour
         }
         else
         {
-            if (ammoInTotal + ammoInUse >= ammo)
+            if (ammoInTotal + ammoInUse >= bulletAmmo)
             {
-                ammoDifference = ammo - ammoInUse;
+                ammoDifference = bulletAmmo - ammoInUse;
                 ammoInUse += ammoDifference;
                 ammoInTotal -= ammoDifference;
             }

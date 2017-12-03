@@ -103,6 +103,7 @@
     <Compile Include="Assets\Scripts\RewindTime.cs" />
     <Compile Include="Assets\Scripts\TimeBehaviour.cs" />
     <Compile Include="Assets\Scripts\TimeGrenade.cs" />
+    <Compile Include="Assets\Scripts\Traps.cs" />
     <Compile Include="Assets\Used Assets\MiniMap\Scripts\InnerMap.cs" />
     <Compile Include="Assets\Used Assets\MiniMap\Scripts\MapArrow.cs" />
     <Compile Include="Assets\Used Assets\MiniMap\Scripts\MapCanvasController.cs" />

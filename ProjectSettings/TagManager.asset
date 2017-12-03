@@ -10,6 +10,7 @@ TagManager:
   - Bullet
   - HP
   - Ammo
+  - Trap
   layers:
   - Default
   - TransparentFX
