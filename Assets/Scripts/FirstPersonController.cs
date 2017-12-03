@@ -7,9 +7,12 @@ public class FirstPersonController : MonoBehaviour
 {
     #region Variables
     // Movement
-    private float forwardSpeed, sideSpeed, upwardsSpeed; // Speed for moving forward, backwards, left and right
+    private float forwardSpeed;
+    private float sideSpeed;
+    private float upwardsSpeed; // Speed for moving forward, backwards, left and right
     private float verticalVelocity = 0.0f;
     private float movementSpeed;
+    [Header("Movement")]
     [SerializeField]
     private float normalSpeed = 10.0f;    // Movement speed in those directions
     [SerializeField]
@@ -19,6 +22,7 @@ public class FirstPersonController : MonoBehaviour
 
     // Dashing
     private bool canDash = true;
+    [Header("Dash")]
     [SerializeField]
     private float maxDashTime = 2.0f;
     [SerializeField]
@@ -27,6 +31,7 @@ public class FirstPersonController : MonoBehaviour
     // Rotation
     private float rotLeftRight; // Camera rotation speed
     private float verticalRotation = 0.0f;   // Used for camera degrees rotation
+    [Header("Rotation")]
     [SerializeField]
     private float mouseSensitivity = 2.5f; 
     [SerializeField]
@@ -38,13 +43,13 @@ public class FirstPersonController : MonoBehaviour
 
     // Dieing animation
     private float totalRotation = 0;
+    [Header("Dieing animation")]
     [SerializeField]
     private float rotationDegreesPerSecond = 45f;
     [SerializeField]
     private float rotationDegreesAmount = 60f;
 
     private PlayerInfo playerInfo;
-
     #endregion
 
     void Start ()
@@ -113,7 +118,7 @@ public class FirstPersonController : MonoBehaviour
 
         forwardSpeed = Input.GetAxis("Vertical") * movementSpeed;
         sideSpeed = Input.GetAxis("Horizontal") * movementSpeed;
-
+        // TODO jump dash
         if (characterController.isGrounded && Input.GetKey(KeyCode.Space))
         {
             if (movementSpeed == sprintSpeed)

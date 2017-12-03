@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pathfinder Genesis", "Pathfinder Genesis.csproj", "{7770F267-2BA5-E464-E1FF-E05E83E8B724}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pathfinder Genesis.Editor", "Pathfinder Genesis.Editor.csproj", "{54A2D63D-2FF3-0278-4701-9720011490C0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,10 +13,6 @@ Global
 		{7770F267-2BA5-E464-E1FF-E05E83E8B724}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7770F267-2BA5-E464-E1FF-E05E83E8B724}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7770F267-2BA5-E464-E1FF-E05E83E8B724}.Release|Any CPU.Build.0 = Release|Any CPU
-		{54A2D63D-2FF3-0278-4701-9720011490C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54A2D63D-2FF3-0278-4701-9720011490C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54A2D63D-2FF3-0278-4701-9720011490C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54A2D63D-2FF3-0278-4701-9720011490C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

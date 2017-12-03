@@ -49,7 +49,7 @@ public class EnemyAI : MonoBehaviour
         layer_mask = LayerMask.GetMask("Player"); // So it only hits the player
 
         animator = GetComponent<Animator>();
-
+        // TODO enemy health bar
         StartCoroutine(WaitForAttack());
     }
 
@@ -103,7 +103,7 @@ public class EnemyAI : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, transform.forward);
 
-        if (Physics.SphereCast(ray, 2f, out hit, layer_mask))
+        if (Physics.SphereCast(ray, 0.75f, out hit, layer_mask))
         {
             GameObject hitObject = hit.transform.gameObject;
             if (hitObject.tag == "Player")//hitObject.GetComponent<PlayerInfo>())

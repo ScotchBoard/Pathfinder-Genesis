@@ -27,7 +27,7 @@ public class ForceField : MonoBehaviour
     
     private void OnTriggerEnter(Collider collider)
     {
-        if(collider.gameObject.tag != "Player")
+        if(collider.gameObject.tag != "Player" && collider.gameObject.layer != 13)
         {
             if(collider.gameObject.GetComponent<Rigidbody>())
             {
@@ -39,7 +39,7 @@ public class ForceField : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag != "Player")
+        if (other.gameObject.tag != "Player" && other.gameObject.layer != 13)
         {
             if (other.gameObject.GetComponent<Rigidbody>())
             {

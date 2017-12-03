@@ -47,7 +47,8 @@ public class RotationalAmmoIndicator : MonoBehaviour {
 		for (int i = 0; i < Count ; i ++ )
 		{
 			GameObject ThisIndicator = Instantiate(IndicatorGameObject,gameObject.transform.position, Quaternion.Euler(0f, 0f, ((360f/(float)MaxCount) * i))) as GameObject;
-			ThisIndicator.transform.parent = gameObject.transform;
+            //ThisIndicator.transform.parent = gameObject.transform;
+            ThisIndicator.transform.SetParent(gameObject.transform);
 			ThisIndicator.transform.localScale = new Vector3(1f,1f,1f);
 
 			Images.Add (gameObject.transform.GetChild(i).gameObject.GetComponent<Image>());

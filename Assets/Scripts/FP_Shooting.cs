@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class FP_Shooting : MonoBehaviour
 {
+    #region Variables
     //Drag in the Bullet Emitter from the Component Inspector.
     public GameObject bulletEmitter;
 
@@ -25,6 +26,8 @@ public class FP_Shooting : MonoBehaviour
 
     //Enter the Speed of the Bullet from the Component Inspector.
     public float bulletForwardForce;
+
+    #endregion
 
     private void Start()
     {

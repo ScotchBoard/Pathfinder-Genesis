@@ -138,17 +138,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Pathfinder Genesis.csproj">
-      <Project>{7770F267-2BA5-E464-E1FF-E05E83E8B724}</Project>
-      <Name>Pathfinder Genesis</Name>
-    </ProjectReference>
     <ProjectReference Include="Pathfinder Genesis.Plugins.csproj">
       <Project>{A7BD093E-BF29-763B-FC9A-4D5962C319E8}</Project>
       <Name>Pathfinder Genesis.Plugins</Name>
     </ProjectReference>
+    <ProjectReference Include="Pathfinder Genesis.csproj">
+      <Project>{7770F267-2BA5-E464-E1FF-E05E83E8B724}</Project>
+      <Name>Pathfinder Genesis</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+    <Compile Include="Assets\Standard Assets\Prototyping\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+    <Compile Include="Assets\Standard Assets\Prototyping\Prototyping\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\unique\OFL-FAQ.txt" />
@@ -165,6 +167,27 @@
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Effects\Projectors\Guidelines.txt" />
+    <None Include="Assets\Standard Assets\Prototyping\Effects\Projectors\Shaders\ProjectorLight.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Effects\TessellationShaders\Shaders\BumpedSpecularSmooth.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Effects\ToonShading\Shaders\ToonBasic.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Effects\ToonShading\Shaders\ToonLit.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Prototyping\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Prototyping\Effects\Projectors\Guidelines.txt" />
+    <None Include="Assets\Standard Assets\Prototyping\Prototyping\Effects\Projectors\Shaders\ProjectorLight.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Prototyping\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Prototyping\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Prototyping\Effects\TessellationShaders\Shaders\BumpedSpecularSmooth.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Prototyping\Effects\ToonShading\Shaders\ToonBasic.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Prototyping\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Prototyping\Effects\ToonShading\Shaders\ToonLit.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Prototyping\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
+    <None Include="Assets\Standard Assets\Prototyping\Prototyping\Shaders\WorldCoordDiffuse.shader" />
     <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

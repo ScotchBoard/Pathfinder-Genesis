@@ -8,24 +8,25 @@ public class AmmoManager : MonoBehaviour
     [SerializeField]
     private int ammo;
     [SerializeField]
-    private int clips;
+    private int maxAmmo;
     [SerializeField]
     private float reloadTime = 2f;
 
     public Text ammoInUseText, ammoInTotalText;
+    public const int MAXAMMO = 100;
 
     private int ammoInUse, ammoInTotal, ammoDifference;
     private bool reloading = false;
 
-    private void Start()
-    {
-        StartCoroutine(ReloadTime(reloadTime));
-    }
-
     private void Awake()
     {
         ammoInUse = ammo;
-        ammoInTotal = clips * ammo;
+        ammoInTotal = maxAmmo;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(ReloadTime(reloadTime));
     }
 
     private void Update()
@@ -85,6 +86,30 @@ public class AmmoManager : MonoBehaviour
                 ammoInTotal = 0;
             }
             reloading = true;
+        }
+    }
+
+    public void IncreaseAmmo(GameObject item, int ammo)
+    {
+        bool usedAmmo = false;
+
+        if(ammoInTotal + ammo < MAXAMMO)
+        {
+            ammoInTotal += ammo;
+            usedAmmo = true;
+        }
+        else
+        {
+            if(ammoInTotal < MAXAMMO)
+            {
+                ammoInTotal = MAXAMMO;
+                usedAmmo = true;
+            }
+        }
+
+        if(usedAmmo)
+        {
+            Destroy(item);
         }
     }
 
