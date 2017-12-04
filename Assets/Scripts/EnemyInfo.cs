@@ -17,14 +17,14 @@ public class EnemyInfo : MonoBehaviour, IUnits
     {
         healthBarBehaviour = healthBar.GetComponent<ProgressBarBehaviour>();
 
-        healthBarBehaviour.FillerInfo.MaxWidth = enemyHealth;//SetFillerSize(enemyHealth);
-
+        healthBarBehaviour.maxSize = enemyHealth;
         healthBarBehaviour.IncrementValue(enemyHealth);
     }
 
     public void Hurt(float damage)
     {
         enemyHealth -= damage;
+        healthBarBehaviour.DecrementValue(damage);
 
         CheckIfAlive();
     }

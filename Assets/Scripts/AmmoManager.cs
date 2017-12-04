@@ -37,6 +37,7 @@ public class AmmoManager : MonoBehaviour
         {
             ammoInUseText.text = ammoInUse.ToString();
             ammoInTotalText.text = ammoInTotal.ToString();
+            grenadeAmmoText.text = grenadeAmmo.ToString();
         }
 
         if (Input.GetKey(KeyCode.R) || ammoInUse == 0)
@@ -55,6 +56,14 @@ public class AmmoManager : MonoBehaviour
         if (ammoInUse > 0 && !reloading)
         {
             ammoInUse--;
+        }
+    }
+
+    public void ThrowNade()
+    {
+        if(grenadeAmmo > 0)
+        {
+            grenadeAmmo--;
         }
     }
 
@@ -91,8 +100,9 @@ public class AmmoManager : MonoBehaviour
         }
     }
 
-    public void IncreaseAmmo(GameObject item, int ammo)
+    public void IncreaseAmmo(GameObject item, int ammo, int grenades)
     {
+        // Increase the ammo
         bool usedAmmo = false;
 
         if(ammoInTotal + ammo < MAXAMMO)
@@ -108,7 +118,23 @@ public class AmmoManager : MonoBehaviour
                 usedAmmo = true;
             }
         }
+        
+        // Increase the grenades
+        if(grenadeAmmo + grenades < MAXNADES)
+        {
+            grenadeAmmo += grenades;
+            usedAmmo = true;
+        }
+        else
+        {
+            if (grenadeAmmo < MAXNADES)
+            {
+                grenadeAmmo = MAXNADES;
+                usedAmmo = true;
+            }
+        }
 
+        // Destroy the ammo box
         if(usedAmmo)
         {
             Destroy(item);
@@ -118,6 +144,11 @@ public class AmmoManager : MonoBehaviour
     public bool CanFire()
     {
         return ammoInUse > 0 && !reloading;
+    }
+
+    public bool CanThrowNade()
+    {
+        return grenadeAmmo > 0;
     }
 
     IEnumerator ReloadTime(float time)

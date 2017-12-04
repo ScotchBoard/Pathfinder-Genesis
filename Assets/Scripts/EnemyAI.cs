@@ -49,7 +49,7 @@ public class EnemyAI : MonoBehaviour
         layer_mask = LayerMask.GetMask("Player"); // So it only hits the player
 
         animator = GetComponent<Animator>();
-        // TODO enemy health bar
+
         StartCoroutine(WaitForAttack());
     }
 
@@ -103,8 +103,17 @@ public class EnemyAI : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, transform.forward);
 
-        if (Physics.SphereCast(ray, 0.75f, out hit, layer_mask))
+        int layerMask = 1 << 8;
+        //layerMask = ~layerMask;
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
+            /*
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            Debug.Log("Did Hit");
+            */
             GameObject hitObject = hit.transform.gameObject;
             if (hitObject.tag == "Player")//hitObject.GetComponent<PlayerInfo>())
             {
@@ -114,6 +123,22 @@ public class EnemyAI : MonoBehaviour
                 bullet.GetComponent<BulletDamage>().Attacker(gameObject.tag);
             }
         }
+        /*
+        if (Physics.Raycast(transform.position, Vector3.forward, Mathf.Infinity, layerMask))
+        {
+            Debug.Log("The ray hit the player");
+            if (Physics.SphereCast(ray, 0.75f, out hit))
+            {
+                GameObject hitObject = hit.transform.gameObject;
+                if (hitObject.tag == "Player")//hitObject.GetComponent<PlayerInfo>())
+                {
+                    bullet = Instantiate(bulletPrefab);
+                    bullet.transform.position = transform.position + new Vector3(0, heightDistance, 0);
+                    bullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletForwardForce);
+                    bullet.GetComponent<BulletDamage>().Attacker(gameObject.tag);
+                }
+            }
+        }*/
     }
 
 

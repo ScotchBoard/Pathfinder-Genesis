@@ -25,6 +25,8 @@ public class PlayerInfo : MonoBehaviour, IUnits
     private int hpGain = 20;
     [SerializeField]
     private int ammoGain = 40;
+    [SerializeField]
+    private int grenadeGain = 2;
 
     private ProgressBarBehaviour healthBarBehaviour;
     private ProgressBarBehaviour energyBarBehaviour;
@@ -46,6 +48,9 @@ public class PlayerInfo : MonoBehaviour, IUnits
 
         healthBarBehaviour = healthBar.GetComponent<ProgressBarBehaviour>();
         energyBarBehaviour = energyBar.GetComponent<ProgressBarBehaviour>();
+
+        healthBarBehaviour.maxSize = 100;
+        energyBarBehaviour.maxSize = 100;
 
         energyBarBehaviour.IncrementValue(playerEnergy);
         healthBarBehaviour.IncrementValue(playerHealth);
@@ -136,7 +141,7 @@ public class PlayerInfo : MonoBehaviour, IUnits
         {
             if (other.gameObject.tag == "Ammo")
             {
-                ammoManager.IncreaseAmmo(other.gameObject, ammoGain);
+                ammoManager.IncreaseAmmo(other.gameObject, ammoGain, grenadeGain);
             }
         }
     }

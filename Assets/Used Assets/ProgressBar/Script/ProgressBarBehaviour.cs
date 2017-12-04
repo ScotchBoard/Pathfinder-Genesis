@@ -9,6 +9,10 @@ namespace ProgressBar
     /// </summary>
     public class ProgressBarBehaviour : MonoBehaviour, IIncrementable, IDecrementable
     {
+        // The maximum size of the bar
+        [HideInInspector]
+        public float maxSize;
+
         /// <summary>
         /// Rect from the panel that will act as Filler.
         /// </summary>
@@ -42,7 +46,7 @@ namespace ProgressBar
         {
             get
             {
-                return Mathf.Round(m_Value.AsFloat / m_FillerInfo.MaxWidth * 100);
+                return Mathf.Round(m_Value.AsFloat / m_FillerInfo.MaxWidth * maxSize);
             }
             set
             {
@@ -168,7 +172,7 @@ namespace ProgressBar
         public void SetFillerSize(float Width)
         {
             if (m_AttachedText)
-                m_AttachedText.text = Mathf.Round(Width / FillerInfo.MaxWidth * 100).ToString() + " %";
+                m_AttachedText.text = Mathf.Round(Width / FillerInfo.MaxWidth * maxSize).ToString() + " %";
 
             m_FillRect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, XOffset, Width);
         }
@@ -179,10 +183,10 @@ namespace ProgressBar
         /// <param name="Percent">this method needs a percentage as parameter</param>
         public void SetFillerSizeAsPercentage(float Percent)
         {
-            m_Value.Set(FillerInfo.MaxWidth * Percent / 100);
+            m_Value.Set(FillerInfo.MaxWidth * Percent / maxSize);
             
             if (Value < 0) Value = 0;
-            else if (Value > 100) Value = 100;
+            else if (Value > maxSize) Value = maxSize;
         }
 
         /// <summary>
@@ -201,7 +205,7 @@ namespace ProgressBar
         {
             Value += inc;
 
-            if (Value > 100) Value = 100;
+            if (Value > maxSize) Value = maxSize;
         }
 
         /// <summary>

@@ -10,6 +10,15 @@ public class GrenadeThrower : MonoBehaviour
     private GameObject grenadePrefab;
 
     private GameObject grenade;
+    private AmmoManager ammoManager;
+
+    private void Start()
+    {
+        if (GetComponentInParent<AmmoManager>() != null)
+        {
+            ammoManager = GetComponentInParent<AmmoManager>();
+        }
+    }
 
     private void Update()
     {
@@ -21,13 +30,15 @@ public class GrenadeThrower : MonoBehaviour
 
     private void ThrowGrenade()
     {
-        if (grenade == null && !ForceField.isActive)
+        if (grenade == null && !ForceField.isActive && ammoManager.CanThrowNade())
         {
             grenade = Instantiate(grenadePrefab, transform.position, transform.rotation);
 
             grenade.gameObject.GetComponent<TimeGrenade>().launched = true;
 
             grenade.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
+
+            ammoManager.ThrowNade();
         }
     }
 }
