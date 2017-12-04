@@ -27,6 +27,8 @@ public class PlayerInfo : MonoBehaviour, IUnits
     private int ammoGain = 40;
     [SerializeField]
     private int grenadeGain = 2;
+    [SerializeField]
+    private int energyGain = 20;
 
     private ProgressBarBehaviour healthBarBehaviour;
     private ProgressBarBehaviour energyBarBehaviour;
@@ -35,7 +37,8 @@ public class PlayerInfo : MonoBehaviour, IUnits
     private AmmoManager ammoManager;
 
     // Public
-    public const int MAXHP = 100;
+    public const int MAX_HP = 100;
+    public const int MAX_ENERGY = 100;
     #endregion
 
     #region Start - Update
@@ -49,8 +52,8 @@ public class PlayerInfo : MonoBehaviour, IUnits
         healthBarBehaviour = healthBar.GetComponent<ProgressBarBehaviour>();
         energyBarBehaviour = energyBar.GetComponent<ProgressBarBehaviour>();
 
-        healthBarBehaviour.maxSize = 100;
-        energyBarBehaviour.maxSize = 100;
+        healthBarBehaviour.maxSize = MAX_HP;
+        energyBarBehaviour.maxSize = MAX_ENERGY;
 
         energyBarBehaviour.IncrementValue(playerEnergy);
         healthBarBehaviour.IncrementValue(playerHealth);
@@ -58,7 +61,7 @@ public class PlayerInfo : MonoBehaviour, IUnits
 
     private void Update()
     {
-        if (totalPlayerEnergy < 100)
+        if (totalPlayerEnergy < MAX_ENERGY)
         {
             EnergyRegen(energyRegen);
         }
@@ -128,10 +131,9 @@ public class PlayerInfo : MonoBehaviour, IUnits
 
     private void OnTriggerEnter(Collider other)
     {
-        // TODO energy item
         if (other.gameObject.tag == "HP")
         {
-            if (playerHealth < MAXHP)
+            if (playerHealth < MAX_HP)
             {
                 IncreaseHealth();
                 Destroy(other.gameObject);
@@ -143,6 +145,17 @@ public class PlayerInfo : MonoBehaviour, IUnits
             {
                 ammoManager.IncreaseAmmo(other.gameObject, ammoGain, grenadeGain);
             }
+            else
+            {
+                if(other.gameObject.tag == "Energy")
+                {
+                    if (totalPlayerEnergy < MAX_ENERGY)
+                    {
+                        IncreaseEnergy();
+                        Destroy(other.gameObject);
+                    }
+                }
+            }
         }
     }
 
@@ -150,18 +163,36 @@ public class PlayerInfo : MonoBehaviour, IUnits
     {
         int hpIncrease = 0;
 
-        if(playerHealth + hpGain <= MAXHP)
+        if(playerHealth + hpGain <= MAX_HP)
         {
             hpIncrease = hpGain;
             playerHealth += hpIncrease;
         }
         else
         {
-            hpIncrease = MAXHP - (int)playerHealth;
+            hpIncrease = MAX_HP - (int)playerHealth;
             playerHealth += hpIncrease;
         }
 
         healthBarBehaviour.IncrementValue(hpIncrease);
+    }
+
+    private void IncreaseEnergy()
+    {
+        int energyIncrease = 0;
+
+        if (totalPlayerEnergy + energyGain <= MAX_ENERGY)
+        {
+            energyIncrease = energyGain;
+            totalPlayerEnergy += energyIncrease;
+        }
+        else
+        {
+            energyIncrease = MAX_ENERGY - (int)totalPlayerEnergy;
+            totalPlayerEnergy += energyIncrease;
+        }
+
+        energyBarBehaviour.IncrementValue(energyIncrease);
     }
 
     private void EnergyRegen(float energyRegen)
