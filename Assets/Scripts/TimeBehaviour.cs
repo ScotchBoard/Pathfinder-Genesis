@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TimeBehaviour: MonoBehaviour
 {
+    // Private
     private float localTimeScale = 1.0f; // the lower it is, the slower the objects inside the force field moves
     private Rigidbody rigidBody;
 
@@ -12,8 +13,8 @@ public class TimeBehaviour: MonoBehaviour
 
     private GameObject forceField;
 
-    [HideInInspector]
-    public bool isSlowed = false;
+    // Public
+    public bool IsSlowed { get; private set; }
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class TimeBehaviour: MonoBehaviour
 
     private void Update()
     {
-        if(forceField == null && isSlowed)
+        if(forceField == null && IsSlowed)
         {
             RestoreData();
         }
@@ -63,7 +64,7 @@ public class TimeBehaviour: MonoBehaviour
         rigidBody.velocity = velocity;
         rigidBody.mass = mass;
 
-        isSlowed = false;
+        IsSlowed = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -71,7 +72,7 @@ public class TimeBehaviour: MonoBehaviour
         if(other.gameObject.tag == "Force Field")
         {
             forceField = other.gameObject;
-            isSlowed = true;
+            IsSlowed = true;
         }
     }
 

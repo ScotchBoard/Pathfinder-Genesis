@@ -13,8 +13,13 @@ public class AmmoManager : MonoBehaviour
     private int grenadeAmmo = 3;
     [SerializeField]
     private float reloadTime = 2f;
+    [SerializeField]
+    private Text ammoInUseText;
+    [SerializeField]
+    private Text ammoInTotalText;
+    [SerializeField]
+    private Text grenadeAmmoText;
 
-    public Text ammoInUseText, ammoInTotalText, grenadeAmmoText;
     public const int MAXAMMO = 100, MAXNADES = 5;
 
     private int ammoInUse, ammoInTotal, ammoDifference;

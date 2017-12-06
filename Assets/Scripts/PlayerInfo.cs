@@ -194,7 +194,7 @@ public class PlayerInfo : MonoBehaviour, IUnits
 
         energyBarBehaviour.IncrementValue(energyIncrease);
     }
-
+    
     private void EnergyRegen(float energyRegen)
     {
         // TODO test the use of energy after depleted, e.g: you can't dash when you reach 0 and energy regens above 10

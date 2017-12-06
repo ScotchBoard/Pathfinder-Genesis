@@ -7,7 +7,8 @@ public class FP_Shooting : MonoBehaviour
 {
     #region Variables
     //Drag in the Bullet Emitter from the Component Inspector.
-    public GameObject bulletEmitter;
+    [SerializeField]
+    private GameObject bulletEmitter;
 
     private float nextFire = 0.0F;
     [SerializeField]
@@ -22,10 +23,12 @@ public class FP_Shooting : MonoBehaviour
     private AmmoManager ammoManager;
 
     //Drag in the Bullet Prefab from the Component Inspector.
-    public GameObject bullet;
+    [SerializeField]
+    private GameObject bullet;
 
     //Enter the Speed of the Bullet from the Component Inspector.
-    public float bulletForwardForce;
+    [SerializeField]
+    private float bulletForwardForce;
 
     #endregion
 

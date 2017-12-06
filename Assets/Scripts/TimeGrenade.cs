@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class TimeGrenade : MonoBehaviour
 {
-    public GameObject forceFieldEffect;
-    public float delay = 3f;
-
-    public bool launched = false;
+    // Private
+    [SerializeField]
+    private GameObject forceFieldEffect;
+    [SerializeField]
+    private float delay = 3f;
 
     private float countdown;
     private bool hasExploded = false;
+
+    // Public
+    public bool Launched { get; set; }
 
     private void Start()
     {
@@ -25,7 +29,7 @@ public class TimeGrenade : MonoBehaviour
             hasExploded = true;
         }
         
-        if (launched)
+        if (Launched)
         {
             countdown -= Time.deltaTime;
 
@@ -41,7 +45,7 @@ public class TimeGrenade : MonoBehaviour
     {
         Instantiate(forceFieldEffect, transform.position, transform.rotation);
 
-        launched = false;
+        Launched = false;
 
         Destroy(gameObject);
     }

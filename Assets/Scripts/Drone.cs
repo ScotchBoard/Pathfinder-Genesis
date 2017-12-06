@@ -32,7 +32,7 @@ public class Drone : MonoBehaviour
         }
         else
         {
-            if (!timeBehaviour.isSlowed)
+            if (!timeBehaviour.IsSlowed)
             {
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step * Time.deltaTime);

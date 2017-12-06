@@ -34,7 +34,7 @@ public class GrenadeThrower : MonoBehaviour
         {
             grenade = Instantiate(grenadePrefab, transform.position, transform.rotation);
 
-            grenade.gameObject.GetComponent<TimeGrenade>().launched = true;
+            grenade.gameObject.GetComponent<TimeGrenade>().Launched = true;
 
             grenade.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
 

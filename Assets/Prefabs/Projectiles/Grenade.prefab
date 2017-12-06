@@ -352,6 +352,7 @@ MonoBehaviour:
   forceFieldEffect: {fileID: 1413751900942884, guid: c93a569ea84cc224b984d7ea82eeb8f2,
     type: 2}
   delay: 3
+  launched: 0
 --- !u!114 &114482296676449934
 MonoBehaviour:
   m_ObjectHideFlags: 1

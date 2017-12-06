@@ -18,10 +18,14 @@ public class Keyframe
 
 public class RewindTime: MonoBehaviour
 {
+    #region Variables
+
     [SerializeField]
     private GameObject player;
     [SerializeField]
     private ArrayList keyframes;
+    [SerializeField]
+    private int maxFrames = 128;
     [SerializeField]
     private bool isReversing = false;
     [SerializeField]
@@ -42,6 +46,8 @@ public class RewindTime: MonoBehaviour
     private PlayerInfo playerInfo;
 
     private bool firstRun = true;
+
+    #endregion
 
     void Start()
     {
@@ -108,7 +114,7 @@ public class RewindTime: MonoBehaviour
         }
 
         // Doesn't save more than 128 frames
-        if (keyframes.Count > 128)
+        if (keyframes.Count > maxFrames)
         {
             keyframes.RemoveAt(0);
         }

@@ -1616,6 +1616,8 @@ MonoBehaviour:
   energyRegen: 1
   hpGain: 20
   ammoGain: 40
+  grenadeGain: 2
+  energyGain: 20
 --- !u!114 &114272584289354076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1747,6 +1749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7bfa6267aae4749b50f1edbe359a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSize: 0
   m_FillRect: {fileID: 224758138962227530}
   m_AttachedText: {fileID: 114419320690098776}
   ProgressSpeed: 200
@@ -2108,12 +2111,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5db8d6ab924ce1489345639eba10891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo: 20
-  maxAmmo: 60
+  bulletAmmo: 0
+  maxBulletAmmo: 0
+  grenadeAmmo: 2
   reloadTime: 0.75
   ammoInUseText: {fileID: 114771400258128068}
   ammoInTotalText: {fileID: 114869795265996210}
-  grenadeAmmo: {fileID: 114600591174107678}
+  grenadeAmmoText: {fileID: 0}
 --- !u!114 &114869795265996210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2329,6 +2333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7bfa6267aae4749b50f1edbe359a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSize: 0
   m_FillRect: {fileID: 224289297915637038}
   m_AttachedText: {fileID: 114871567328645982}
   ProgressSpeed: 200

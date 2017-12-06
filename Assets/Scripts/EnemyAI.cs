@@ -63,7 +63,7 @@ public class EnemyAI : MonoBehaviour
             }
             else
             {
-                if (!timeBehaviour.isSlowed && CheckPlayerInRange())
+                if (!timeBehaviour.IsSlowed && CheckPlayerInRange())
                 {
                     navMeshAgent.isStopped = false;
                     navMeshAgent.SetDestination(target.position);
